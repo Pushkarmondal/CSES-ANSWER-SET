@@ -1,0 +1,184 @@
+** QUESTION ** 
+______________________________________________________________________________________________>>>>
+=>
+
+Consider an algorithm that takes as input a positive integer n
+. If n
+ is even, the algorithm divides it by two, and if n
+ is odd, the algorithm multiplies it by three and adds one. The algorithm repeats this, until n
+ is one. For example, the sequence for n=3
+ is as follows:
+3→10→5→16→8→4→2→1
+
+Your task is to simulate the execution of the algorithm for a given value of n
+.
+
+Input
+
+The only input line contains an integer n
+.
+
+Output
+
+Print a line that contains all values of n
+ during the algorithm.
+
+Constraints
+***********
+1≤n≤106
+
+Example
+
+Input:
+3
+
+Output:
+3 10 5 16 8 4 2 1
+
+
+CODE
+****
+
+#include <algorithm>
+#include <bitset>
+#include <complex>
+#include <deque>
+#include <exception>
+#include <functional>
+#include <iomanip>
+#include <ios>
+#include <iosfwd>
+#include <iostream>
+#include <iterator>
+#include <limits>
+#include <list>
+#include <numeric>
+#include <locale>
+#include <map>
+#include <memory>
+#include <new>
+#include <numeric>
+#include <ostream>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <stack>
+#include <stdexcept>
+#include <streambuf>
+#include <string>
+#include <typeinfo>
+#include <utility>
+#include <valarray>
+#include <vector>
+#include <array>
+#include <atomic>
+#include <chrono>
+#include <condition_variable>
+#include <forward_list>
+#include <future>
+#include <initializer_list>
+#include <mutex>
+#include <random>
+#include <ratio>
+#include <regex>
+#include <scoped_allocator>
+#include <system_error>
+#include <thread>
+#include <tuple>
+#include <cmath>
+#include <typeindex>
+#include <type_traits>
+#include <unordered_map>
+#include <unordered_set>
+#include <math.h>
+#include <ctype.h>
+#include <fstream>
+ 
+using namespace std;
+ 
+ 
+ 
+// MACROS::>>>>>>>>>>>>* 
+ 
+//#define debug(x) cout << #x << " " << x <<endl;
+#define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define MOD 1000000007
+#define MOD1 998244353
+#define INF 1e18
+#define endl "\n"
+#define pb push_back
+#define pb1 pop_back;
+#define vi vector<int>
+#define vintt vector<intt>
+#define vpi vector<pair<int,int>>
+#define vpl vector<pair<intt,intt>>
+#define getl(s) getline(cin,s)
+#define fi first
+#define se second
+#define PI 3.141592653589793238462
+#define bp __builtin_popcount
+#define sz(x) (x.size())
+#define fr(i,a,b)       for(ll i=a;i<b;i++)
+#define all(x)  (a).begin(),(a).end()
+#define rep(i, begin, end) for (__typeof(end) i = (begin) - ((begin) > (end)); i != (end) - ((begin) > (end)); i += 1 - 2 * ((begin) > (end)))
+#define fast ios::sync_with_stdio(0) , cin.tie(0) , cout.tie(0);
+//#define ld long double
+// ll gcd(ll a, ll b) {if (b > a) {return gcd(b, a);} if (b == 0) {return a;} return gcd(b, a % b);}
+typedef long long ll;
+typedef unsigned long long ull;
+typedef long double lld;
+//typedef tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update > pbds; 
+//  #ifdef LOCAL
+// #include "algo/debug.h"
+// #else
+// #define debug(x)
+// #endif
+#ifndef pushkar
+#define debug(x) cerr << #x<<" "; _print(x); cerr << endl;
+#else
+#define debug(x);
+#endif
+ // ***********************************************************************************************************************************************************************************************************
+//  vector<bool> SieveOfEratosthenes(ll num) {vector<bool>pno;pno.assign(num+1, true);pno[0]=false;pno[1]=false;for (ll i=2;i*i<=num;i++){if(pno[i]==true){for(ll j=i*2;j<=num;j+=i)pno[j]=false;}}return pno;}
+ 
+// vector<ll> SieveOfEratosthenesExtended(ll num) {vector<ll>pno(num+1);fr(i,0,num+1){pno[i]=i;}for(ll i=2;i*i<=num;i++){if(pno[i]==i){for(ll j=i*2;j<=num;j+=i)if(pno[j]==j)pno[j]=i;}}return pno;}
+ 
+// vector<ll> PrimeFactorize(ll num){vector<ll>spf;spf=SieveOfEratosthenesExtended(num);set<ll>pf;while(num!=1){
+//         pf.insert(spf[num]);num=num/spf[num];}vector<ll>v;for(auto it:pf){v.pb(it);}return v;}
+ 
+ ll gcd(ll a, ll b) {if (b > a) {return gcd(b, a);} if (b == 0) {return a;} return gcd(b, a % b);}
+ // ***********************************************************************************************************************************************************************************************************
+/*PUSHKAR MONDAL
+VELLORE INSTITUTE OF TECHNOLOGY*/
+ 
+ 
+//FIRST 
+ 
+// void solve(){
+ 
+// }
+// int main(){
+//     int t;
+//     cin>>t;
+//     while(t--){
+//         solve();
+//     }
+// }
+ 
+//SECOND
+ 
+ int main(){
+    ll n;
+    cin>>n;
+    cout<<n<<" ";
+    while(n !=1){
+        if(n%2!=0)
+            n=n*3+1;
+            
+        else
+            n=n/2;
+        cout<<n<<" ";
+            
+    }
+    return 0;
+}
