@@ -1,0 +1,362 @@
+** QUESTION **
+________________________________________________________________________________________________________
+=>
+Given an array of n
+ integers, your task is to process q
+ queries of the form: what is the sum of values in range [a,b]
+?
+
+Input
+
+The first input line has two integers n
+ and q
+: the number of values and queries.
+
+The second line has n
+ integers x1,x2,…,xn
+: the array values.
+
+Finally, there are q
+ lines describing the queries. Each line has two integers a
+ and b
+: what is the sum of values in range [a,b]
+?
+
+Output
+
+Print the result of each query.
+
+Constraints
+___________
+1≤n,q≤2⋅105
+
+1≤xi≤109
+
+1≤a≤b≤n
+
+Example
+
+Input:
+8 4
+3 2 4 5 1 1 5 3
+2 4
+5 6
+1 8
+3 3
+
+Output:
+11
+2
+24
+4
+
+CODE
+
+
+#include"bits/stdc++.h"
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+#include<algorithm>
+#include<unordered_map>
+#include<vector>
+#include<unordered_set>
+#include<set>
+#include<map>
+#include<queue>
+#include<stack>
+#include<map>
+#include<chrono>                    
+ 
+using namespace std;
+using namespace __gnu_pbds;
+using namespace chrono;
+  
+ // MACROS::>>>>>>>>>>>>* 
+ 
+#define debug(x) cout << #x << " " << x <<endl;
+#define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define MOD 1000000007
+#define MOD1 998244353
+#define INF 1e18
+#define endl "\n"
+#define pb push_back
+#define ppb pop_back;
+#define mp make_pair
+#define vi vector<int>
+#define vintt vector<intt>
+#define vpi vector<pair<int,int>>
+#define vpl vector<pair<intt,intt>>
+#define lcm(a,b) (a*b)/__gcd(a,b)
+#define getl(s) getline(cin,s)
+#define ff first
+#define ss second
+#define PI 3.141592653589793238462
+#define set_bits __builtin_popcount
+#define sz(x) (x.size())
+#define all(x)  (x).begin(),(x).end()
+ 
+ 
+typedef long long ll;
+typedef unsigned long long ull;
+typedef long double lld;
+typedef tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update > pbds; 
+ 
+ 
+//DEBUGGING 
+ 
+#ifdef PUSHKAR
+#define debug(x) cerr << #x<<" "; _print(x); cerr << endl;
+#else
+#define debug(x);
+#endif
+ 
+#define  TC TIME COMPLEXITY 
+ 
+ 
+/*                
+                 --------------------
+                /                     \                                            
+               /                       \                                          
+              /                         \                                          
+             /                           \                 777777777777777         
+            /                             \                               7        
+           /                               \                             7
+          /                                 \                           7                 
+         /                                   \                         7                 
+        /                                     \                       7                   
+       /                                       \                     7                    
+      /                                         \                   7
+                                                                   7
+          \                                /                      7
+           \                              /                      7
+            \                            /
+             \                          /
+              \                        /
+----------------------------------------------------------------------------------------------------
+                                                                                                    \
+/*---------------------------------------------------------------------------------------------------------------------------*/
+ 
+/*PUSHKAR MONDAL
+VELLORE INSTITUTE OF TECHNOLOGY*/
+ 
+ 
+//HOW TO CALCULATE TC OF RECURSIVE FUNCTION>>
+ 
+ 
+ //(1) NUMBER OF FUNCTION CALLED
+ //(2) WHAT IS THE TIME COMPLEXITY OF EACH FUNCTION
+ 
+ 
+ 
+/*TRUST THE FUNCTION -> RECURSIVE LEAP OF FAITH  
+  
+  PRINTS -->>>>
+  PRINTS ::
+            HELLO 1
+            HELLO 2
+            HELLO 3
+            .
+            .
+            .
+            HELLO N-1
+            HELLO N        */
+ 
+//int print(int n){
+    /* if(n==0) return ;
+cout<<"pushkar"<<n<<endl;
+hello(n-1);*/
+   // if(n==1){
+   // cout<<1<<endl;
+    //return 0;
+    //}
+    //if(n==2){
+      //  return 1;
+    //}
+  // int ans=sum(n-1);
+  // return ans-1;
+  // return n;
+    //for(int i=1;i<=n;i++){
+    //    cout<<i<<" ";
+    //}
+    //cout<<endl;
+    //pattern(n-1);
+    //for(int i=1;i<=n;i++){
+      //  cout<<i<<" ";
+    //}
+    //cout<<endl;
+    //return fibo(n-1)+fibo(n-2);
+//int index=0;
+//void ans(string num){
+   /*if(n==0){
+        return;
+    }
+    if(pus){
+        cout<<" ";
+    }
+   // cout<<n--<<' ';
+    pus=1;
+   // return num(n);*/
+    
+ 
+   //cout<<n<<" "<<endl;
+     //for(int i=0;i<n;i++) {
+        //return i
+        //cout<<i<<" "<<endl;
+   // }
+       
+       //if(n==0 )return 1 ;
+       //return n*num(n-1);
+ 
+    // if(index=num.size()) {
+      //  return;
+    //}
+     //cout<<num[index]<<" ";
+     //index++;
+     //return ans(num);
+ 
+ 
+//}
+  /*long long sum(long long n, long long a[]){
+    if(n<0) return 0;
+    return sum(n-1 ,a)+a[n];
+  }
+ 
+ 
+int main(){
+    long long n;
+    cin>>n;
+    long long a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    cout<<sum(n-1,a)<<endl;
+    
+}*/
+ 
+ 
+ 
+/*int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        map<int,int> a;
+        for(int i=0;i<n;i++){
+ 
+        }
+    }
+       
+}*/
+/*
+*********: To convert decimal number to binary :*********
+ 
+A decimal integer can be converted 
+to binary by dividing it by 2.
+ 
+Take the quotient, and keep dividing it by 2,
+ until you reach zero.
+ 
+Each time you perform this division,
+ take note of the remainder.
+ Now reverse the remainders list, 
+and you get the number in binary form*/
+ 
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+/*int ans(int n){
+    if(n==0){
+        return 0;
+    }
+    else{
+        return (n%2+10*ans(n/2));
+ 
+    }
+    
+}
+ 
+ 
+int main(){
+  
+ int t;
+ cin>>t;
+ while(t--){
+    int n;
+    cin>>n;
+    cout<<ans(n)<<endl;
+ 
+ }
+ 
+}*/
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+ 
+ 
+/*int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int a,b;
+        cin>>a>>b;
+        long long ans = min(a,b);
+        long long pus = max(a,b);
+        for (long long i = 0; i < ans; i++) {
+            cout<<10;
+        }
+        int fang=pus-ans;
+        for(ll i = 0; i <fang; i++) {
+            if(b>a) {
+                cout<<"1";
+            }else{
+                cout<<"0";
+            }
+        }
+        cout<<endl;
+    }
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+      int n;
+      string s;
+      cin>>n>>s;
+      long long ans=n;
+        for(long long i=1;i<n;i++){
+           if(s[i]!=s[i-1]){
+             ans+=i;
+    }
+}
+        cout<<ans<<endl;
+ 
+  }
+}*/
+ 
+    
+/*int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        vector<int>v(n);
+        for(int i=0;i<n;i++)
+            cin>>v[i];
+        
+        cout<<v[0]<<endl;
+    }*/
+//char p[3],m[3];
+int main(){
+  
+   ll a,b,c,d;
+   cin>>a>>b;
+   ll n[a];
+   for (ll i = 1; i <=a; ++i)
+   {
+       cin>>n[i];
+       n[i]+=n[i-1];
+   }
+   while(b--){
+    cin>>c>>d;
+    cout<<n[d]-n[c-1]<<endl;
+   }
+}
+ 
