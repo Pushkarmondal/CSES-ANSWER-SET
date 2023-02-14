@@ -1,0 +1,211 @@
+** QUESTION **
+__________________________________________________________________________________________________________________
+=>
+There are n
+ applicants and m
+ free apartments. Your task is to distribute the apartments so that as many applicants as possible will get an apartment.
+
+Each applicant has a desired apartment size, and they will accept any apartment whose size is close enough to the desired size.
+
+Input
+
+The first input line has three integers n
+, m
+, and k
+: the number of applicants, the number of apartments, and the maximum allowed difference.
+
+The next line contains n
+ integers a1,a2,…,an
+: the desired apartment size of each applicant. If the desired size of an applicant is x
+, he or she will accept any apartment whose size is between x−k
+ and x+k
+.
+
+The last line contains m
+ integers b1,b2,…,bm
+: the size of each apartment.
+
+Output
+
+Print one integer: the number of applicants who will get an apartment.
+
+Constraints
+1≤n,m≤2⋅105
+
+0≤k≤109
+
+1≤ai,bi≤109
+
+Example
+
+Input:
+4 3 5
+60 45 80 60
+30 60 75
+
+Output:
+2
+
+CODE
+****
+
+#include <algorithm>
+#include <bitset>
+#include <complex>
+#include <deque>
+#include <exception>
+#include <functional>
+#include <iomanip>
+#include <ios>
+#include <iosfwd>
+#include <iostream>
+#include <iterator>
+#include <limits>
+#include <list>
+#include <numeric>
+#include <locale>
+#include <map>
+#include <memory>
+#include <new>
+#include <numeric>
+#include <ostream>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <stack>
+#include <stdexcept>
+#include <streambuf>
+#include <string>
+#include <typeinfo>
+#include <utility>
+#include <valarray>
+#include <vector>
+#include <array>
+#include <atomic>
+#include <chrono>
+#include <condition_variable>
+#include <forward_list>
+#include <future>
+#include <initializer_list>
+#include <mutex>
+#include <random>
+#include <ratio>
+#include <regex>
+#include <scoped_allocator>
+#include <system_error>
+#include <thread>
+#include <tuple>
+#include <cmath>
+#include <typeindex>
+#include <type_traits>
+#include <unordered_map>
+#include <unordered_set>
+#include <math.h>
+#include <ctype.h>
+#include <fstream>
+ 
+using namespace std;
+ 
+ 
+ 
+// MACROS::>>>>>>>>>>>>* 
+ 
+//#define debug(x) cout << #x << " " << x <<endl;
+#define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define MOD 1000000007
+#define MOD1 998244353
+#define INF 1e18
+#define endl "\n"
+#define pb push_back
+#define pb1 pop_back;
+#define vi vector<int>
+#define vintt vector<intt>
+#define vpi vector<pair<int,int>>
+#define vpl vector<pair<intt,intt>>
+#define getl(s) getline(cin,s)
+#define fi first
+#define se second
+#define PI 3.141592653589793238462
+#define bp __builtin_popcount
+#define sz(x) (x.size())
+#define fr(i,a,b)       for(ll i=a;i<b;i++)
+#define all(x)  (a).begin(),(a).end()
+#define rep(i, begin, end) for (__typeof(end) i = (begin) - ((begin) > (end)); i != (end) - ((begin) > (end)); i += 1 - 2 * ((begin) > (end)))
+#define fast ios::sync_with_stdio(0) , cin.tie(0) , cout.tie(0);
+//#define ld long double
+// ll gcd(ll a, ll b) {if (b > a) {return gcd(b, a);} if (b == 0) {return a;} return gcd(b, a % b);}
+typedef long long ll;
+typedef unsigned long long ull;
+typedef long double lld;
+//typedef tree<ll, null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update > pbds; 
+//  #ifdef LOCAL
+// #include "algo/debug.h"
+// #else
+// #define debug(x)
+// #endif
+#ifndef pushkar
+#define debug(x) cerr << #x<<" "; _print(x); cerr << endl;
+#else
+#define debug(x);
+#endif
+ // ***********************************************************************************************************************************************************************************************************
+//  vector<bool> SieveOfEratosthenes(ll num) {vector<bool>pno;pno.assign(num+1, true);pno[0]=false;pno[1]=false;for (ll i=2;i*i<=num;i++){if(pno[i]==true){for(ll j=i*2;j<=num;j+=i)pno[j]=false;}}return pno;}
+ 
+// vector<ll> SieveOfEratosthenesExtended(ll num) {vector<ll>pno(num+1);fr(i,0,num+1){pno[i]=i;}for(ll i=2;i*i<=num;i++){if(pno[i]==i){for(ll j=i*2;j<=num;j+=i)if(pno[j]==j)pno[j]=i;}}return pno;}
+ 
+// vector<ll> PrimeFactorize(ll num){vector<ll>spf;spf=SieveOfEratosthenesExtended(num);set<ll>pf;while(num!=1){
+//         pf.insert(spf[num]);num=num/spf[num];}vector<ll>v;for(auto it:pf){v.pb(it);}return v;}
+ 
+ ll gcd(ll a, ll b) {if (b > a) {return gcd(b, a);} if (b == 0) {return a;} return gcd(b, a % b);}
+ // ***********************************************************************************************************************************************************************************************************
+/*PUSHKAR MONDAL
+VELLORE INSTITUTE OF TECHNOLOGY*/
+ 
+ 
+//FIRST 
+ 
+// void solve(){
+ 
+// }
+// int main(){
+//     int t;
+//     cin>>t;
+//     while(t--){
+//         solve();
+//     }
+// }
+ 
+//SECOND
+ 
+ 
+int main()
+{
+    ll n,m,k;
+    cin>>n>>m>>k;
+    int a[n];
+    int b[m];
+    ll ans=0;
+    for (int i = 0; i < n; ++i) cin >> a[i];
+    for (int i = 0; i < m; ++i) cin >> b[i];
+    sort(a,a+n);
+    sort(b,b+m);
+    int i = 0, j = 0;
+    while (i<n and j<m){
+        
+        if (abs(a[i] - b[j]) <= k){
+            ++ans;
+            ++i;
+            ++j;
+            
+        }
+        else{
+            if (a[i] - b[j] > k){
+                ++j;
+            }else{
+                ++i;
+            }
+        }
+    }
+    cout << ans <<endl;
+}
+ 
